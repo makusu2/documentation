@@ -8994,8 +8994,6 @@ components:
           items:
             $ref: '#/components/schemas/SyntheticsAPIStep'
           type: array
-      required:
-      - assertions
       type: object
     SyntheticsAPITestResultData:
       description: Object containing results for your Synthetic API test.
@@ -9628,6 +9626,9 @@ components:
         example:
           description: Example for the variable.
           type: string
+        id:
+          description: Id of the variable for global variables.
+          type: string
         name:
           description: Name of the variable.
           example: VARIABLE_NAME
@@ -9638,16 +9639,17 @@ components:
         type:
           $ref: '#/components/schemas/SyntheticsConfigVariableType'
       required:
-      - example
       - type
       - name
       type: object
     SyntheticsConfigVariableType:
       description: Type of the configuration variable.
       enum:
+      - global
       - text
       type: string
       x-enum-varnames:
+      - GLOBAL
       - TEXT
     SyntheticsCoreWebVitals:
       description: Core Web Vitals attached to a browser test step.
@@ -10289,8 +10291,6 @@ components:
           items:
             $ref: '#/components/schemas/SyntheticsBrowserVariable'
           type: array
-      required:
-      - assertions
       type: object
     SyntheticsTestDetails:
       description: Object containing details about your Synthetic test.
